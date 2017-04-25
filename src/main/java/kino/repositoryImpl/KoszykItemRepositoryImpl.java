@@ -31,8 +31,12 @@ public class KoszykItemRepositoryImpl implements KoszykItemRepository {
 		
 		if(!listaKoszykItemow.isEmpty()){
 			for(KoszykItem item: listaKoszykItemow){
-				if(item.getSeans().equals(koszykItem.getSeans()) && item.getMiejsce().equals(koszykItem.getMiejsce())){
-					zapisz = false;
+				if(item.getSeans().equals(koszykItem.getSeans())){ 
+					if(item.getMiejsce().getMiejsce().equals(koszykItem.getMiejsce().getMiejsce())){
+						if(item.getMiejsce().getRzad().equals(koszykItem.getMiejsce().getRzad())){
+							zapisz = false;
+						}
+					}
 				}
 			}
 		}

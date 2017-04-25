@@ -79,8 +79,8 @@ public class MiejsceServiceImpl implements MiejsceService {
 	}
 
 	@Override
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych() {
-		miejsceRepository.UsuwanieChwilowoZajetychMiejscZBazyDanych();	
+	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans) {
+		miejsceRepository.UsuwanieChwilowoZajetychMiejscZBazyDanych(seans);	
 	}
 
 	@Override

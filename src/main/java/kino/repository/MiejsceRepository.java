@@ -20,6 +20,6 @@ public interface MiejsceRepository {
 	public void UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();
 	public void update(Miejsce miejsce);
 	public List<Miejsce> getZajeteMiejsca(Seans seans);
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych();
+	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans);
 	
 }

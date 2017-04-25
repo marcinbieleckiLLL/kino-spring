@@ -130,7 +130,7 @@ public class KoszykController{
 		}
 		koszykItemService.delete();
 		koszykService.deleteKoszyk(user);
-		miejsceService.UsuwanieChwilowoZajetychMiejscZBazyDanych();
+		miejsceService.UsuwanieChwilowoZajetychMiejscZBazyDanych(seansService.getTwojSeans());
 		miejsceService.UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();
 		miejsceService.getListaChwilowoZajetychMiejsc();
 		

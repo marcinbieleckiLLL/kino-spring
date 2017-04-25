@@ -16,7 +16,7 @@
 						<div class="container" style="text-align:center">
 							<h1><spring:message code="koszyk.koszyk" /></h1>
 							<h3><spring:message code="koszyk.listaSeansow" /></h3>
-							<h4>${lista}</h4>
+							
 						</div>
 					</div>
 		</section>

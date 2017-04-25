@@ -162,8 +162,8 @@ public class MiejsceRepositoryImpl implements MiejsceRepository {
 	}
 
 	@Override
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych() {
-		List<Miejsce> listaZajetychMiejsc = getListaChwilowoZajetychMiejsc();
+	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans) {
+		List<Miejsce> listaZajetychMiejsc = getZajeteMiejsca(seans);
 		
 		for(Miejsce miejsce: listaZajetychMiejsc){
 			updateDostepnosc(miejsce, "wolne");
