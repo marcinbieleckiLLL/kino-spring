@@ -30,7 +30,7 @@ public class User implements Serializable {
 	@Column(name="username")
 	private String nazwa;
 	@Column(name="enabled")
-	private String enbled;
+	private String enabled;
 	@ManyToOne(targetEntity = UserRoles.class)
 	@JoinColumn(name = "Rola_Uzytkownika")
 	private UserRoles userRole;
@@ -63,7 +63,7 @@ public class User implements Serializable {
 		super();
 		this.nazwa = nazwa;
 		this.haslo = haslo;
-		this.enbled = enbled;
+		this.enabled = enbled;
 		this.userRole = userRole;
 	}
 	
@@ -71,12 +71,12 @@ public class User implements Serializable {
 		return nazwa;
 	}
 
-	public String getEnbled() {
-		return enbled;
+	public String getEnabled() {
+		return enabled;
 	}
 
-	public void setEnbled(String enbled) {
-		this.enbled = enbled;
+	public void setEnabled(String enbled) {
+		this.enabled = enbled;
 	}
 
 	public Long getId() {

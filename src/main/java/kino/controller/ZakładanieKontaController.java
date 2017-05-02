@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 import java.io.File;
 import java.util.HashSet;
@@ -26,7 +26,7 @@ import kino.service.UserService;
 
 @Controller
 @SessionAttributes("User") 
-public class AddingAccountController {
+public class Zak³adanieKontaController {
 
 	@Autowired
 	private UserService userService;
@@ -38,7 +38,7 @@ public class AddingAccountController {
 	public String Add(Model model){
 		User user =  new User();
 		model.addAttribute("nowyUser", user);
-		return "addAccount";
+		return "dodawanieKonta";
 	}
 	
 	@RequestMapping(value = "/addAccount", method=RequestMethod.POST)
@@ -46,7 +46,7 @@ public class AddingAccountController {
 		
 		UserRoles userRoles = new UserRoles("ROLE_ADMIN");
 		Set<User> listaUzytkownikow = new HashSet<User>();
-		user.setEnbled("true");
+		user.setEnabled("true");
 		listaUzytkownikow.add(user);
 		userRoles.setUsers(listaUzytkownikow);
 		user.setUserRole(userRoles);  

@@ -9,5 +9,5 @@ public interface FilmService {
 	public void save(Film film, String nazwa);
 	public Film getFilmById(Long id);
 	public Film getFilmByName(String nazwa);
-	public List<String> dniTygodnia();
+	public List<String> days();
 }

@@ -16,14 +16,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="KoszykItem")
-public class KoszykItem {
+@Table(name="KoszykCzesc")
+public class KoszykCzesc {
 
 	
 	
 	@Id
 	@GeneratedValue
-	@Column(name="KoszykItem_id")
+	@Column(name="KoszykCzesc_id")
 	private Long id;
 	@ManyToOne(targetEntity = Seans.class, optional=false)
 	private Seans seans; 
@@ -34,10 +34,10 @@ public class KoszykItem {
 	@Column(name="Cena")
 	private int cena;
 
-	public KoszykItem(){}
+	public KoszykCzesc(){}
 	
 
-	public KoszykItem(Seans seans, Miejsce miejsce, int cena) {
+	public KoszykCzesc(Seans seans, Miejsce miejsce, int cena) {
 		super();
 		this.seans = seans;
 		this.miejsce = miejsce;
@@ -105,7 +105,7 @@ public class KoszykItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		KoszykItem other = (KoszykItem) obj;
+		KoszykCzesc other = (KoszykCzesc) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

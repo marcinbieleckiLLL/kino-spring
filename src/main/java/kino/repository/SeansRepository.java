@@ -14,7 +14,7 @@ public interface SeansRepository {
 	public void save(Seans seans);
 	public List<Seans> getSeansByFilmNameAndDay(Film film, String dzien);
 	public Seans getSeansByFilmNameAndDayAndHour(String godzina);
-	public List<String> TworzenieListy(String atrybut1, String atrybut2, String atrybut3, String atrybut4);
+	public List<String> createList(String atrybut1, String atrybut2, String atrybut3, String atrybut4);
 	public Seans getTwojSeans();
 	public void update(Seans seans);
 }

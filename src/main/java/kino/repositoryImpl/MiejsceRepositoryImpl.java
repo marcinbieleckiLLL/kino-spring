@@ -108,14 +108,14 @@ public class MiejsceRepositoryImpl implements MiejsceRepository {
 		
 	}
 
-	public void dodajChwilowoZajeteMiejsceDoListy(String rzad, String miejsce) {
+	public void addChwilowoZajeteMiejsceToList(String rzad, String miejsce) {
 		
 		Miejsce miejsceZajete = new Miejsce(rzad, miejsce, "chwilowoZajête");
 		listaChwilowoZajetychMiejsc.add(miejsceZajete);
 	}
 
 	@Override
-	public void usunChwilowoZajeteMiejsceZListyZajetychMiejsc() {
+	public void deleteChwilowoZajeteMiejsceFromList() {
 		
 		if(!listaChwilowoZajetychMiejsc.isEmpty())
 			listaChwilowoZajetychMiejsc.remove(listaChwilowoZajetychMiejsc.size() - 1);
@@ -137,7 +137,7 @@ public class MiejsceRepositoryImpl implements MiejsceRepository {
 	}
 
 	@Override
-	public void UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc() {
+	public void deleteAllChwilowoZajeteMiejscaFromList() {
 		setListaChwilowoZajetychMiejsc(new ArrayList<Miejsce>());
 	}
 
@@ -162,7 +162,7 @@ public class MiejsceRepositoryImpl implements MiejsceRepository {
 	}
 
 	@Override
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans) {
+	public void deleteChwilowoZajeteMiejscaFromDatabase(Seans seans) {
 		List<Miejsce> listaZajetychMiejsc = getZajeteMiejsca(seans);
 		
 		for(Miejsce miejsce: listaZajetychMiejsc){

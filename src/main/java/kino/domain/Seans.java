@@ -58,7 +58,7 @@ public class Seans implements Serializable {
 	private String napisy; 
 	@OneToMany(mappedBy="seans", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<KoszykItem> koszykItem;
+	private List<KoszykCzesc> koszykCzesci;
 	@ManyToMany(mappedBy="seanse", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonBackReference
@@ -75,12 +75,12 @@ public class Seans implements Serializable {
 	
 	
 	
-	public List<KoszykItem> getKoszykItem() {
-		return koszykItem;
+	public List<KoszykCzesc> getKoszykCzesci() {
+		return koszykCzesci;
 	}
 
-	public void setKoszykItem(List<KoszykItem> koszykItem) {
-		this.koszykItem = koszykItem;
+	public void setKoszykCzesci(List<KoszykCzesc> koszykCzesci) {
+		this.koszykCzesci = koszykCzesci;
 	}
 
 	public Film getFilm() {

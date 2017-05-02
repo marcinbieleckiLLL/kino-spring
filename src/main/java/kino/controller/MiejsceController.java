@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class MiejsceController {
 		String rzad = request.getRzad();
 		String miejsce = request.getMiejsce();	
 		Seans seans = seansService.getTwojSeans();
-		miejsceService.dodajChwilowoZajeteMiejsceDoListy(rzad, miejsce);
+		miejsceService.addChwilowoZajeteMiejsceToList(rzad, miejsce);
 		miejsceService.updateDostepnosc(miejsceService.getMiejsce(rzad, miejsce, seans), "chwilowoZajête");
 	
 	}
@@ -45,7 +45,7 @@ public class MiejsceController {
 	public void Cofnij(){
 		Seans seans = seansService.getTwojSeans();
 		kino.domain.Miejsce miejsce = miejsceService.getOstatnieZajeteMiejsce();
-		miejsceService.usunChwilowoZajeteMiejsceZListyZajetychMiejsc();
+		miejsceService.deleteChwilowoZajeteMiejsceFromList();
 		miejsceService.updateDostepnosc(miejsceService.getMiejsce(miejsce.getRzad(), miejsce.getMiejsce(), seans), "wolne");
 	}
 }

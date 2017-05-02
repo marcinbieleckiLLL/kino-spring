@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -38,13 +38,13 @@ public class MiejsceServiceImpl implements MiejsceService {
 	}
 
 	@Override
-	public void dodajChwilowoZajeteMiejsceDoListy(String rzad, String miejsce) {
-		miejsceRepository.dodajChwilowoZajeteMiejsceDoListy(rzad, miejsce);	
+	public void addChwilowoZajeteMiejsceToList(String rzad, String miejsce) {
+		miejsceRepository.addChwilowoZajeteMiejsceToList(rzad, miejsce);	
 	}
 
 	@Override
-	public void usunChwilowoZajeteMiejsceZListyZajetychMiejsc() {
-		miejsceRepository.usunChwilowoZajeteMiejsceZListyZajetychMiejsc();
+	public void deleteChwilowoZajeteMiejsceFromList() {
+		miejsceRepository.deleteChwilowoZajeteMiejsceFromList();
 		
 	}
 
@@ -64,8 +64,8 @@ public class MiejsceServiceImpl implements MiejsceService {
 	}
 
 	@Override
-	public void UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc() {
-		miejsceRepository.UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();		
+	public void deleteAllChwilowoZajeteMiejscaFromList() {
+		miejsceRepository.deleteAllChwilowoZajeteMiejscaFromList();		
 	}
 
 	@Override
@@ -79,8 +79,8 @@ public class MiejsceServiceImpl implements MiejsceService {
 	}
 
 	@Override
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans) {
-		miejsceRepository.UsuwanieChwilowoZajetychMiejscZBazyDanych(seans);	
+	public void deleteChwilowoZajeteMiejscaFromDatabase(Seans seans) {
+		miejsceRepository.deleteChwilowoZajeteMiejscaFromDatabase(seans);	
 	}
 
 	@Override

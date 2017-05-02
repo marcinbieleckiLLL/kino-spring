@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kino.domain.Miejsce;
 import kino.domain.Seans;
 import kino.domain.User;
-import kino.service.KoszykItemService;
+import kino.service.KoszykCzescService;
 import kino.service.KoszykService;
 import kino.service.MiejsceService;
 import kino.service.SeansService;
@@ -29,7 +29,7 @@ public class KoniecController {
 	private UserService userService;
 	
 	@Autowired
-	private KoszykItemService koszykItemService;
+	private KoszykCzescService koszykItemService;
 	
 	@Autowired
 	private KoszykService koszykService;
@@ -49,10 +49,10 @@ public class KoniecController {
 		for(Miejsce miejsce: listaZajetychMiejsc){
 			miejsceService.updateDostepnosc((miejsceService.getMiejsce(miejsce.getRzad(), miejsce.getMiejsce(), seans)), "zajête");
 		}
-		miejsceService.UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();
+		miejsceService.deleteAllChwilowoZajeteMiejscaFromList();
 		
 
-		seans.setKoszykItem(null);
+		seans.setKoszykCzesci(null);
 		seansService.update(seans);
 		
 		return "koniec";

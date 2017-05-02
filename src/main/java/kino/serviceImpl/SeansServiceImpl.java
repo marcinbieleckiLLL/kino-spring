@@ -35,8 +35,8 @@ public class SeansServiceImpl implements SeansService {
 	}
 
 	@Override
-	public List<String> TworzenieListy(String atrybut1, String atrybut2, String atrybut3, String atrybut4) {
-		return seansRepository.TworzenieListy(atrybut1, atrybut2, atrybut3, atrybut4);
+	public List<String> createList(String atrybut1, String atrybut2, String atrybut3, String atrybut4) {
+		return seansRepository.createList(atrybut1, atrybut2, atrybut3, atrybut4);
 	}
 
 	@Override

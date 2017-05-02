@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kino.domain.Koszyk;
-import kino.domain.KoszykItem;
+import kino.domain.KoszykCzesc;
 import kino.domain.User;
 import kino.repository.KoszykRepository;
 import kino.service.KoszykService;
@@ -24,8 +24,8 @@ public class KoszykServiceImpl implements KoszykService {
 	}
 
 	@Override
-	public Koszyk deleteKoszykItem(KoszykItem koszykItem, User user) {
-		return koszykRepository.deleteKoszykItem(koszykItem, user);
+	public Koszyk deleteKoszykItem(KoszykCzesc koszykItem, User user) {
+		return koszykRepository.deleteKoszykCzesc(koszykItem, user);
 		
 	}
 

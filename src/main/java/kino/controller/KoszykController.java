@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import kino.domain.Koszyk;
-import kino.domain.KoszykItem;
+import kino.domain.KoszykCzesc;
 import kino.domain.Miejsce;
 import kino.domain.Seans;
 import kino.domain.User;
 import kino.model.KoszykItemModel;
 import kino.model.MiejsceModel;
-import kino.service.KoszykItemService;
+import kino.service.KoszykCzescService;
 import kino.service.KoszykService;
 import kino.service.MiejsceService;
 import kino.service.SeansService;
@@ -48,7 +48,7 @@ public class KoszykController{
 	private UserService userService;
 	
 	@Autowired
-	private KoszykItemService koszykItemService;
+	private KoszykCzescService koszykItemService;
 	
 	@Autowired
 	private KoszykService koszykService;
@@ -70,19 +70,19 @@ public class KoszykController{
 		List<Miejsce> listaChwilowoZajetychMiejsc = miejsceService.getListaChwilowoZajetychMiejsc();
 		
 		if(!listaChwilowoZajetychMiejsc.isEmpty()){
-			List<KoszykItem> koszykItems = new ArrayList<KoszykItem>();
+			List<KoszykCzesc> koszykItems = new ArrayList<KoszykCzesc>();
 			
 			int cenaKoszykItem = 20;
 			int cenaKoszyk = 0;
 			Koszyk koszyk = new Koszyk();
 			
 			for(Miejsce miejsce: listaChwilowoZajetychMiejsc){
-				KoszykItem koszykItem = new KoszykItem(seansService.getTwojSeans(), miejsceService.getMiejsce(miejsce.getRzad(), miejsce.getMiejsce(), seans), cenaKoszykItem);
+				KoszykCzesc koszykItem = new KoszykCzesc(seansService.getTwojSeans(), miejsceService.getMiejsce(miejsce.getRzad(), miejsce.getMiejsce(), seans), cenaKoszykItem);
 				koszykItems.add(koszykItem);
 				cenaKoszyk = cenaKoszyk + koszykItem.getCena();
 			}
 			koszyk.setCena(cenaKoszyk);
-			koszyk.setKoszykItems(koszykItems);
+			koszyk.setKoszykCzesci(koszykItems);
 			koszyk.setUser(userService.getAktualnyUzytkownik());
 			koszykService.create(userService.getAktualnyUzytkownik(), koszyk);
 			
@@ -94,13 +94,13 @@ public class KoszykController{
 			}
 			userService.update(userService.getAktualnyUzytkownik());
 			
-			seansService.getTwojSeans().setKoszykItem(koszykItems);
+			seansService.getTwojSeans().setKoszykCzesci(koszykItems);
 			
 			for(Miejsce m:listaChwilowoZajetychMiejsc){
-				m.setKoszykItem(koszykItems);
+				m.setKoszykCzesci(koszykItems);
 			}
 			
-			for(KoszykItem item:koszykItems){
+			for(KoszykCzesc item:koszykItems){
 				item.setKoszyk(koszykService.read(userService.getAktualnyUzytkownik()));
 				koszykItemService.save(item);
 			}
@@ -120,18 +120,18 @@ public class KoszykController{
 		this.czyUstawicUserowiKoszyk = false;
 		
 		Seans seans = seansService.getTwojSeans();
-		seans.setKoszykItem(null);
+		seans.setKoszykCzesci(null);
 		seansService.update(seans);
 		
 		List<Miejsce> ListaMiejsc = miejsceService.getListaChwilowoZajetychMiejsc();
 		for(Miejsce m: ListaMiejsc){
-			m.setKoszykItem(null);
+			m.setKoszykCzesci(null);
 			miejsceService.update(m);
 		}
 		koszykItemService.delete();
 		koszykService.deleteKoszyk(user);
-		miejsceService.UsuwanieChwilowoZajetychMiejscZBazyDanych(seansService.getTwojSeans());
-		miejsceService.UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();
+		miejsceService.deleteChwilowoZajeteMiejscaFromDatabase(seansService.getTwojSeans());
+		miejsceService.deleteAllChwilowoZajeteMiejscaFromList();
 		miejsceService.getListaChwilowoZajetychMiejsc();
 		
 		

@@ -79,7 +79,7 @@ public class FilmRepositoryImpl implements FilmRepository {
 	}
 
 	@Override
-	public List<String> dniTygodnia() {
+	public List<String> days() {
 		
 		List<String> dniTygodnia = new ArrayList<String>();
 		

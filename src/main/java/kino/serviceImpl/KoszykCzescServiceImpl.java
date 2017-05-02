@@ -5,33 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kino.domain.KoszykItem;
-import kino.repository.KoszykItemRepository;
-import kino.service.KoszykItemService;
+import kino.domain.KoszykCzesc;
+import kino.repository.KoszykCzescRepository;
+import kino.service.KoszykCzescService;
 
 @Service
-public class KoszykItemServiceImpl implements KoszykItemService{
+public class KoszykCzescServiceImpl implements KoszykCzescService{
 
 	@Autowired
-	KoszykItemRepository koszykItemRepository;
+	KoszykCzescRepository koszykItemRepository;
 	
 	@Override
-	public void save(KoszykItem koszykItem) {
+	public void save(KoszykCzesc koszykItem) {
 		koszykItemRepository.save(koszykItem);
 	}
 
 	@Override
-	public List<KoszykItem> getAll() {
+	public List<KoszykCzesc> getAll() {
 		return koszykItemRepository.getAll();
 	}
 
 	@Override
-	public void update(KoszykItem koszykItem) {
+	public void update(KoszykCzesc koszykItem) {
 		koszykItemRepository.update(koszykItem);	
 	}
 
 	@Override
-	public KoszykItem find(Long id) {
+	public KoszykCzesc find(Long id) {
 		return koszykItemRepository.find(id);
 	}
 

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import kino.domain.Koszyk;
-import kino.domain.KoszykItem;
+import kino.domain.KoszykCzesc;
 import kino.domain.Miejsce;
 import kino.domain.Seans;
 import kino.domain.User;
@@ -42,12 +42,12 @@ public class KoszykRepositoryImpl implements KoszykRepository {
 	}
 	
 	@Override
-	public Koszyk deleteKoszykItem(KoszykItem koszykItem, User user) {
+	public Koszyk deleteKoszykCzesc(KoszykCzesc koszykCzesc, User user) {
 		
 		Koszyk koszyk = read(user);
-		List<KoszykItem> listaItemow = koszyk.getKoszykItems();	
-		listaItemow.remove(koszykItem);
-		koszyk.setKoszykItems(listaItemow);
+		List<KoszykCzesc> listaItemow = koszyk.getKoszykCzesci();	
+		listaItemow.remove(koszykCzesc);
+		koszyk.setKoszykCzesci(listaItemow);
 		update(koszyk);
 		
 		return koszyk;

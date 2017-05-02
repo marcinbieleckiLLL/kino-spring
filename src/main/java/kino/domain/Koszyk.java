@@ -39,7 +39,7 @@ public class Koszyk implements Serializable {
 	private int cena;
 	@Column(name="KoszykItems")
 	@OneToMany(mappedBy="koszyk", fetch = FetchType.EAGER)
-	private List<KoszykItem> koszykItems;
+	private List<KoszykCzesc> koszykCzesci;
 	
 	public Koszyk(){}
 	
@@ -62,12 +62,12 @@ public class Koszyk implements Serializable {
 		this.cena = cena;
 	}
 
-	public List<KoszykItem> getKoszykItems() {
-		return koszykItems;
+	public List<KoszykCzesc> getKoszykCzesci() {
+		return koszykCzesci;
 	}
 
-	public void setKoszykItems(List <KoszykItem> koszykItems) {
-		this.koszykItems = koszykItems;
+	public void setKoszykCzesci(List <KoszykCzesc> koszykCzesci) {
+		this.koszykCzesci = koszykCzesci;
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class Koszyk implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((koszykItems == null) ? 0 : koszykItems.hashCode());
+		result = prime * result + ((koszykCzesci == null) ? 0 : koszykCzesci.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -94,10 +94,10 @@ public class Koszyk implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (koszykItems == null) {
-			if (other.koszykItems != null)
+		if (koszykCzesci == null) {
+			if (other.koszykCzesci != null)
 				return false;
-		} else if (!koszykItems.equals(other.koszykItems))
+		} else if (!koszykCzesci.equals(other.koszykCzesci))
 			return false;
 		if (user == null) {
 			if (other.user != null)

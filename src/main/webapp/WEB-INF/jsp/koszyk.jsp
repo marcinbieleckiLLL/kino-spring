@@ -45,7 +45,7 @@
 							<th><spring:message code="koszyk.Cena" /></th>
 						</tr>
 										
-						<c:forEach items="${koszyk.koszykItems}" var="item"> 
+						<c:forEach items="${koszyk.koszykCzesci}" var="item"> 
 							<tr>
 								<td>${item.seans.film.nazwa}</td>
 								<td>${item.seans.dzien}</td>

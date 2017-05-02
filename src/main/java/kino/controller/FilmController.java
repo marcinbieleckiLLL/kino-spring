@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 
 
@@ -35,7 +35,7 @@ public class FilmController {
 	public String Film(Model model, @PathVariable("nazwa") String nazwa){
 		
 		model.addAttribute("film", filmService.getFilmByName(nazwa));
-		model.addAttribute("dniTygodnia", filmService.dniTygodnia());
+		model.addAttribute("dniTygodnia", filmService.days());
 			
 		return "StronaFilmu2";
 	}

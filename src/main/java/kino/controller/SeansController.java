@@ -1,4 +1,4 @@
-package kino.controllers;
+package kino.controller;
 
 
 import java.util.List;

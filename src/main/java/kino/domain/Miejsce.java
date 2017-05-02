@@ -38,18 +38,18 @@ public class Miejsce {
 	private String dostepnosc;
 	@OneToMany(mappedBy="miejsce", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<KoszykItem> koszykItem;
+	private List<KoszykCzesc> koszykCzesci;
 	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonManagedReference
 	private List<Seans> seanse;
 	
-	public List<KoszykItem> getKoszykItem() {
-		return koszykItem;
+	public List<KoszykCzesc> getKoszykCzesci() {
+		return koszykCzesci;
 	}
 
-	public void setKoszykItem(List<KoszykItem> koszykItem) {
-		this.koszykItem = koszykItem;
+	public void setKoszykCzesci(List<KoszykCzesc> koszykCzesci) {
+		this.koszykCzesci = koszykCzesci;
 	}
 
 	public Miejsce(){}

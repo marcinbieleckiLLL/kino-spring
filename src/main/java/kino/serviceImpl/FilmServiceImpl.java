@@ -36,9 +36,9 @@ public class FilmServiceImpl implements FilmService {
 	}
 
 	@Override
-	public List<String> dniTygodnia() {
+	public List<String> days() {
 		
-		return filmRepository.dniTygodnia();
+		return filmRepository.days();
 	}
 
 }

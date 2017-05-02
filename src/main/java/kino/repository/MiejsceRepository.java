@@ -12,14 +12,14 @@ public interface MiejsceRepository {
 	public List<Miejsce> getColumn(String decydujaca, Seans seans);
 	public void updateDostepnosc(Miejsce miejsce, String dostepnosc);
 	public Miejsce getMiejsce(String rzad, String miejsce, Seans seans);
-	public void dodajChwilowoZajeteMiejsceDoListy(String rzad, String miejsce);
-	public void usunChwilowoZajeteMiejsceZListyZajetychMiejsc();
+	public void addChwilowoZajeteMiejsceToList(String rzad, String miejsce);
+	public void deleteChwilowoZajeteMiejsceFromList();
 	public Miejsce getOstatnieZajeteMiejsce();
 	public List<Miejsce> getListaChwilowoZajetychMiejsc();
 	public void setListaChwilowoZajetychMiejsc(List<Miejsce> listaChwilowoZajetychMiejsc);
-	public void UsuwanieWszystkichZajetychMiejscZListyZajetychMiejsc();
+	public void deleteAllChwilowoZajeteMiejscaFromList();
 	public void update(Miejsce miejsce);
 	public List<Miejsce> getZajeteMiejsca(Seans seans);
-	public void UsuwanieChwilowoZajetychMiejscZBazyDanych(Seans seans);
+	public void deleteChwilowoZajeteMiejscaFromDatabase(Seans seans);
 	
 }

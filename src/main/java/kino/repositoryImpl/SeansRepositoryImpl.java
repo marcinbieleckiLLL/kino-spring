@@ -119,7 +119,7 @@ public class SeansRepositoryImpl implements SeansRepository{
 	}
 
 	
-	public List<String> TworzenieListy(String atrybut1, String atrybut2, String atrybut3, String atrybut4){
+	public List<String> createList(String atrybut1, String atrybut2, String atrybut3, String atrybut4){
 		List<String> lista = new ArrayList<String>();
 		lista.add(atrybut1);
 		lista.add(atrybut2);

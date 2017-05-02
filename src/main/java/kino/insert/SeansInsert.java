@@ -15,10 +15,10 @@ public class SeansInsert {
 		
 		Film film = filmService.getFilmByName(nazwa);
 
-		List<String> dniTygodnia = filmService.dniTygodnia();
-		List<String> napisy = seansService.TworzenieListy("napisy", "lektor", "dubbing", "napisy");
-		List<String> typ = seansService.TworzenieListy("2d", "2d", "3d", "3d");
-		List<String> godziny = seansService.TworzenieListy("12:00", "13:30", "16:00", "19:15");
+		List<String> dniTygodnia = filmService.days();
+		List<String> napisy = seansService.createList("napisy", "lektor", "dubbing", "napisy");
+		List<String> typ = seansService.createList("2d", "2d", "3d", "3d");
+		List<String> godziny = seansService.createList("12:00", "13:30", "16:00", "19:15");
 		int iloscSeansowWDanymDniu = godziny.size();
 		
 		for(String dzienTyg: dniTygodnia){
