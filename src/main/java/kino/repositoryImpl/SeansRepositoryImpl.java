@@ -13,7 +13,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import kino.domain.Film;
+import kino.domain.Movie;
 import kino.domain.Seans;
 import kino.repository.SeansRepository;
 
@@ -23,9 +23,9 @@ public class SeansRepositoryImpl implements SeansRepository{
 
 	@PersistenceContext
 	private EntityManager emManager;
-	private String dzien;
-	private Film film = new Film();
-	public Seans TwojSeans = new Seans();
+	private String day;
+	private Movie movie = new Movie();
+	public Seans yourSeans = new Seans();
 	
 	public SeansRepositoryImpl(){
 		
@@ -33,38 +33,38 @@ public class SeansRepositoryImpl implements SeansRepository{
 	
 	
 	
-	public Seans getTwojSeans() {
-		return TwojSeans;
+	public Seans getYourSeans() {
+		return yourSeans;
 	}
 
 
 
-	public void setTwojSeans(Seans twojSeans) {
-		TwojSeans = twojSeans;
+	public void setYourSeans(Seans yourSeans) {
+		this.yourSeans = yourSeans;
 	}
 
 
 
-	public String getDzien() {
-		return dzien;
+	public String getDay() {
+		return day;
 	}
 
 
 
-	public void setDzien(String dzien) {
-		this.dzien = dzien;
+	public void setDay(String day) {
+		this.day = day;
 	}
 
 
 
-	public Film getFilm() {
-		return film;
+	public Movie getMovie() {
+		return movie;
 	}
 
 
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 
@@ -77,37 +77,37 @@ public class SeansRepositoryImpl implements SeansRepository{
 	@Override
 	public void save(Seans seans) {
 		
-		List<Seans> listaSeansow = getSeansByFilmNameAndDay(seans.getFilm(),seans.getDzien());
-		boolean zapisz = true;
+		List<Seans> listOfSeanses = getSeansByFilmNameAndDay(seans.getMovie(),seans.getDay());
+		boolean save = true;
 		
-		for(Seans s: listaSeansow){
-			if(s.getGodzina().equals(seans.getGodzina())){
-				zapisz = false;
+		for(Seans s: listOfSeanses){
+			if(s.getHour().equals(seans.getHour())){
+				save = false;
 			}
 		}
 		
-		if(zapisz)
+		if(save)
 			emManager.persist(seans);
 		
 	}
 
 	@Override
-	public List<Seans> getSeansByFilmNameAndDay(Film film, String dzien) {
+	public List<Seans> getSeansByFilmNameAndDay(Movie movie, String day) {
 		
-		this.dzien = dzien;
-		this.film = film;
+		this.day = day;
+		this.movie = movie;
 		
-		String nazwa = null;
+		String name = null;
 		
-		if(film != null)
-				nazwa = film.getNazwa();
+		if(movie != null)
+				name = movie.getName();
 		
 		List<Seans> listaSeansow = new ArrayList<Seans>();
 		
-		if(nazwa != null){
+		if(name != null){
 			TypedQuery<Seans> query = emManager.createNamedQuery("Seans.findByNameAndDay", Seans.class);
-			query.setParameter("nazwa", nazwa);
-			query.setParameter("dzien", dzien);
+			query.setParameter("name", name);
+			query.setParameter("day", day);
 			try{
 				listaSeansow = query.getResultList();
 			}catch(NullPointerException exception){
@@ -119,30 +119,30 @@ public class SeansRepositoryImpl implements SeansRepository{
 	}
 
 	
-	public List<String> createList(String atrybut1, String atrybut2, String atrybut3, String atrybut4){
+	public List<String> createList(String attribute1, String attribute2, String attribute3, String attribute4){
 		List<String> lista = new ArrayList<String>();
-		lista.add(atrybut1);
-		lista.add(atrybut2);
-		lista.add(atrybut3);
+		lista.add(attribute1);
+		lista.add(attribute2);
+		lista.add(attribute3);
 		
-		if(!atrybut4.equals("false"))
-			lista.add(atrybut4);
+		if(!attribute4.equals("false"))
+			lista.add(attribute4);
 		
 		return lista;
 	}
 
 
 	@Override
-	public Seans getSeansByFilmNameAndDayAndHour(String godzina) {
-		List<Seans> listaSeansow = getSeansByFilmNameAndDay(film,dzien);
+	public Seans getSeansByFilmNameAndDayAndHour(String hour) {
+		List<Seans> listOfSeanses = getSeansByFilmNameAndDay(movie,day);
 		
-		for(Seans s: listaSeansow){
-			if(s.getGodzina().equals(godzina)){
-				this.TwojSeans = s;
+		for(Seans s: listOfSeanses){
+			if(s.getHour().equals(hour)){
+				this.yourSeans = s;
 			}
 		}
 		
-		return TwojSeans;
+		return yourSeans;
 	}
 
 

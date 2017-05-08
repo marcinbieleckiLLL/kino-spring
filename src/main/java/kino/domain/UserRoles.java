@@ -27,16 +27,16 @@ public class UserRoles implements Serializable {
 	@OneToMany(mappedBy="userRole")
 	private Set<User> users = new HashSet<User>(0);
 	@Column(name="role")
-	private String rola;
+	private String role;
 	
 	
 	
 	public UserRoles(){}
 	
-	public UserRoles(String rola) {
+	public UserRoles(String role) {
 		super();
 		
-		this.rola = rola;
+		this.role = role;
 	}
 	
 	public Long getId() {
@@ -51,11 +51,11 @@ public class UserRoles implements Serializable {
 	public void setUsers(Set<User> listaUzytkownikow) {
 		this.users = listaUzytkownikow;
 	}
-	public String getRola() {
-		return rola;
+	public String getRole() {
+		return role;
 	}
-	public void setRola(String rola) {
-		this.rola = rola;
+	public void setRole(String rola) {
+		this.role = rola;
 	}
 
 	

@@ -31,9 +31,9 @@ public class UserRolesRepositoryImpl implements UserRolesRepository {
 	}
 
 	@Override
-	public void save(UserRoles rola) {
+	public void save(UserRoles role) {
 		
-		emManager.persist(rola);
+		emManager.persist(role);
 	
 	}
 

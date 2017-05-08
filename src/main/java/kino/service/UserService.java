@@ -11,8 +11,8 @@ public interface UserService {
 	public List<User> getAllUsers();
 	public User getUserByNameAndUserRole(User user,UserRoles userRole);
 	public User getUserById(Long id);
-	public void setAktualnyUzytkownik(User aktualnyUzytkownik);
-	public User getAktualnyUzytkownik();
+	public void setCurrentUser(User currentUser);
+	public User getCurrentUser();
 	public void update(User user);
-	public User getUserByName(String nazwa);
+	public User getUserByName(String name);
 }

@@ -19,20 +19,20 @@
 			<section class="container">
 				<div class="row">
 					`
-					<c:forEach items="${filmy}" var="film">
+					<c:forEach items="${movies}" var="movie">
 					
 						<div class="col-md-3" style="padding-bottom: 25px">
 							<div class="thumbnail">
-								<img src="<c:url value="/resource/images/${film.nazwa}.jpg"></c:url>" alt="image" style= "width:100%" />
+								<img src="<c:url value="/resource/images/${movie.name}.jpg"></c:url>" alt="image" style= "width:100%" />
 									<div class="caption" style="text-align:center">
 										
-										<a href="<spring:url value="/${film.nazwa}" />" class="btn btn-link">
-											<h2>${film.nazwa}</h2>
+										<a href="<spring:url value="/${movie.name}" />" class="btn btn-link">
+											<h2>${movie.name}</h2>
 										</a>
-											<p><spring:message code="index.gatunek" /> ${film.gatunek}</p>
-											<p><spring:message code="index.wiekKlienta" /> ${film.minWiekKlienta}</p>
-											<p><spring:message code="index.ocena" /> ${film.ocena}</p>
-											<p><spring:message code="index.czasTrwania" /> ${film.czasTrwania}</p>
+											<p><spring:message code="index.gatunek" /> ${movie.type}</p>
+											<p><spring:message code="index.wiekKlienta" /> ${movie.ageOfClient}</p>
+											<p><spring:message code="index.ocena" /> ${movie.rating}</p>
+											<p><spring:message code="index.czasTrwania" /> ${movie.time}</p>
 											
 									</div>
 							</div>

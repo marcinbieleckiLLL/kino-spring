@@ -36,14 +36,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void setAktualnyUzytkownik(User aktualnyUzytkownik) {
-		userRepository.setAktualnyUzytkownik(aktualnyUzytkownik);
+	public void setCurrentUser(User currentUser) {
+		userRepository.setCurrentUser(currentUser);
 		
 	}
 
 	@Override
-	public User getAktualnyUzytkownik() {
-		return userRepository.getAktualnyUzytkownik();
+	public User getCurrentUser() {
+		return userRepository.getCurrentUser();
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUserByName(String nazwa) {
-		return userRepository.getUserByName(nazwa);
+	public User getUserByName(String name) {
+		return userRepository.getUserByName(name);
 	}
 
 }

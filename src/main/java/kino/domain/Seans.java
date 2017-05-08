@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity(name="Seans")
-@NamedQuery(name = "Seans.findByNameAndDay", query = "SELECT s FROM Seans s WHERE s.film.nazwa = :nazwa AND s.dzien = :dzien")
+@NamedQuery(name = "Seans.findByNameAndDay", query = "SELECT s FROM Seans s WHERE s.movie.name = :name AND s.day = :day")
 @Table(name="Seans")
 public class Seans implements Serializable {
 
@@ -41,85 +41,84 @@ public class Seans implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="Seans_id")
+	@Column(name="Seanse_id")
 	private Long id;
-	@Column(name="Dzien_tygodnia")
-	private String dzien;
-	@Column(name="Godzina")
-	private String godzina;
-	@ManyToOne(targetEntity = Film.class)
-	@JoinColumn(name = "Film")
-	private Film film;
-	@Column(name="Typ_Filmu")
-	private String typ;
-	@Column(name="Jêzyk_Filmu")
-	private String jezyk;
-	@Column(name="Napisy_Lektor")	
-	private String napisy; 
+	@Column(name="Day")
+	private String day;
+	@Column(name="Hour")
+	private String hour;
+	@ManyToOne(targetEntity = Movie.class)
+	private Movie movie;
+	@Column(name="Type_of_Film")
+	private String type;
+	@Column(name="Language")
+	private String language;
+	@Column(name="Subtitles_or_Lector")	
+	private String subtitlesOrLector; 
 	@OneToMany(mappedBy="seans", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
-	private List<KoszykCzesc> koszykCzesci;
+	private List<BasketItem> basketItems;
 	@ManyToMany(mappedBy="seanse", fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonBackReference
-	private List<Miejsce> miejsca;
+	private List<Position> positions;
 	
 	public Seans(){}
 	
-	public Seans(String dzien, Film film, String jezyk) {
+	public Seans(String day, Movie movie, String language) {
 		super();
-		this.dzien = dzien;	
-		this.jezyk = jezyk;
-		this.film = film;
+		this.day = day;	
+		this.language = language;
+		this.movie = movie;
 	}
 	
 	
 	
-	public List<KoszykCzesc> getKoszykCzesci() {
-		return koszykCzesci;
+	public List<BasketItem> getBasketItems() {
+		return basketItems;
 	}
 
-	public void setKoszykCzesci(List<KoszykCzesc> koszykCzesci) {
-		this.koszykCzesci = koszykCzesci;
+	public void setBasketItems(List<BasketItem> basketItems) {
+		this.basketItems = basketItems;
 	}
 
-	public Film getFilm() {
-		return this.film;
+	public Movie getMovie() {
+		return this.movie;
 	}
 
 
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 	
 
-	public String getTyp() {
-		return typ;
+	public String getType() {
+		return type;
 	}
 
 
-	public void setTyp(String typ) {
-		this.typ = typ;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 
-	public String getJezyk() {
-		return jezyk;
+	public String getLanguage() {
+		return language;
 	}
 
 
-	public void setJezyk(String jezyk) {
-		this.jezyk = jezyk;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 
-	public String getNapisy() {
-		return napisy;
+	public String getSubtitlesOrLector() {
+		return subtitlesOrLector;
 	}
 
 
-	public void setNapisy(String napisy) {
-		this.napisy = napisy;
+	public void setSubtitlesOrLector(String subtitlesOrLector) {
+		this.subtitlesOrLector = subtitlesOrLector;
 	}
 
 
@@ -133,33 +132,33 @@ public class Seans implements Serializable {
 	}
 
 
-	public String getDzien() {
-		return dzien;
+	public String getDay() {
+		return day;
 	}
 
 
-	public void setDzien(String dzien) {
-		this.dzien = dzien;
+	public void setDay(String day) {
+		this.day = day;
 	}
 
 
-	public String getGodzina() {
-		return godzina;
+	public String getHour() {
+		return hour;
 	}
 
 
-	public void setGodzina(String godzina) {
-		this.godzina = godzina;
+	public void setHour(String hour) {
+		this.hour = hour;
 	}
 
 	
 
-	public List<Miejsce> getMiejsca() {
-		return miejsca;
+	public List<Position> getPositions() {
+		return positions;
 	}
 
-	public void setMiejsca(List<Miejsce> miejsca) {
-		this.miejsca = miejsca;
+	public void setPositions(List<Position> postions) {
+		this.positions = postions;
 	}
 
 	@Override

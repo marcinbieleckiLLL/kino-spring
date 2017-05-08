@@ -4,8 +4,8 @@ app.controller('SeansCtrl', function ($scope, $http){
 	$scope.pokaz = function(film, dz){
 		
 		var data = {
-			        nazwa: film,
-			        dzien: dz
+			        name: film,
+			        day: dz
 			    };
 		
 		var successCallBack = function(response){
@@ -18,14 +18,7 @@ app.controller('SeansCtrl', function ($scope, $http){
 			    };
 			      
 			  $http.post('http://localhost:8080/kino/seans/rest',JSON.stringify(data)).then(successCallBack, errorCallBack);
-			    
-			  /* $http({
-	                method : "GET",
-	                url : "/seans/abc/abc",
-	                contentType: 'application/json',
-	                mimeType: 'application/json',
-	                data: JSON.stringify(data)
-	                }).then(successCallBack, errorCallBack);*/
+			  
 	}
 });
 

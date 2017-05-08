@@ -2,18 +2,18 @@ package kino.insert;
 
 import java.util.List;
 
-import kino.domain.Film;
+import kino.domain.Movie;
 import kino.domain.Seans;
-import kino.service.FilmService;
+import kino.service.MovieService;
 import kino.service.SeansService;
 
 public class SeansInsert {
 
 	public SeansInsert(){};
 	
-	public void seansInsert(SeansService seansService, FilmService filmService, String dzien, String nazwa){
+	public void seansInsert(SeansService seansService, MovieService filmService, String dzien, String nazwa){
 		
-		Film film = filmService.getFilmByName(nazwa);
+		Movie film = filmService.getFilmByName(nazwa);
 
 		List<String> dniTygodnia = filmService.days();
 		List<String> napisy = seansService.createList("napisy", "lektor", "dubbing", "napisy");
@@ -24,9 +24,9 @@ public class SeansInsert {
 		for(String dzienTyg: dniTygodnia){
 			for(int i=0;i<iloscSeansowWDanymDniu;i++){
 				Seans seans = new Seans(dzienTyg, film, "PL");
-				seans.setGodzina(godziny.get(i));
-				seans.setNapisy(napisy.get(i));
-				seans.setTyp(typ.get(i));
+				seans.setHour(godziny.get(i));
+				seans.setSubtitlesOrLector(napisy.get(i));
+				seans.setType(typ.get(i));
 				seansService.save(seans);
 			}
 		}

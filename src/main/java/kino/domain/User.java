@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="User")
-@NamedQuery(name = "User.findUser", query = "SELECT u FROM User u WHERE u.nazwa = :nazwa AND u.userRole.id = :id" )
+@NamedQuery(name = "User.findUser", query = "SELECT u FROM User u WHERE u.username = :username AND u.userRole.id = :id" )
 @Table(name="User")
 public class User implements Serializable {
 
@@ -26,23 +26,23 @@ public class User implements Serializable {
 	@Column(name="User_id")
 	private Long id;
 	@Column(name="password")
-	private String haslo;
+	private String password;
 	@Column(name="username")
-	private String nazwa;
+	private String username;
 	@Column(name="enabled")
 	private String enabled;
 	@ManyToOne(targetEntity = UserRoles.class)
 	@JoinColumn(name = "Rola_Uzytkownika")
 	private UserRoles userRole;
 	@OneToOne(mappedBy="user")
-	private Koszyk koszyk;
+	private Basket basket;
 	
-	public Koszyk getKoszyk() {
-		return koszyk;
+	public Basket getBasket() {
+		return basket;
 	}
 
-	public void setKoszyk(Koszyk koszyk) {
-		this.koszyk = koszyk;
+	public void setBasket(Basket basket) {
+		this.basket = basket;
 	}
 
 	public User(){}
@@ -55,20 +55,20 @@ public class User implements Serializable {
 		this.userRole = userRole;
 	}
 
-	public void setNazwa(String nazwa) {
-		this.nazwa = nazwa;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public User(String haslo, String nazwa, String enbled, UserRoles userRole) {
+	public User(String password, String username, String enbled, UserRoles userRole) {
 		super();
-		this.nazwa = nazwa;
-		this.haslo = haslo;
+		this.username = username;
+		this.password = password;
 		this.enabled = enbled;
 		this.userRole = userRole;
 	}
 	
-	public String getNazwa() {
-		return nazwa;
+	public String getUsername() {
+		return username;
 	}
 
 	public String getEnabled() {
@@ -85,20 +85,20 @@ public class User implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getHaslo() {
-		return this.haslo;
+	public String getPassword() {
+		return this.password;
 	}
-	public void setHaslo(String haslo) {
-		this.haslo = haslo;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((haslo == null) ? 0 : haslo.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nazwa == null) ? 0 : nazwa.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -111,20 +111,20 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (haslo == null) {
-			if (other.haslo != null)
+		if (password == null) {
+			if (other.password != null)
 				return false;
-		} else if (!haslo.equals(other.haslo))
+		} else if (!password.equals(other.password))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nazwa == null) {
-			if (other.nazwa != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!nazwa.equals(other.nazwa))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}

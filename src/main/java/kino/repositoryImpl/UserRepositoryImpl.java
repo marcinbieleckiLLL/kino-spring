@@ -23,32 +23,32 @@ public class UserRepositoryImpl implements UserRepository{
 
 	@PersistenceContext
 	private EntityManager emManager;
-	private User aktualnyUzytkownik;
+	private User currentUser;
 	
-	public User getAktualnyUzytkownik() {
-		return aktualnyUzytkownik;
+	public User getCurrentUser() {
+		return currentUser;
 	}
 
-	public void setAktualnyUzytkownik(User aktualnyUzytkownik) {
-		if(this.aktualnyUzytkownik == null)
-			this.aktualnyUzytkownik = aktualnyUzytkownik;
+	public void setCurrentUser(User currentUser) {
+		if(this.currentUser == null)
+			this.currentUser = currentUser;
 	}
 
 	public UserRepositoryImpl(){
 		
 	}
 	
-	public void save(User uzytkownik){
-		List<User> listaUzytkownikow = getAllUsers();
-		boolean zapisz = true;
+	public void save(User user){
+		List<User> listOfUsers = getAllUsers();
+		boolean save = true;
 		
-		for(User user: listaUzytkownikow){
-			if(user.getNazwa() == uzytkownik.getNazwa()){
-				zapisz = false;
+		for(User u: listOfUsers){
+			if(u.getUsername() == user.getUsername()){
+				save = false;
 			}
 		}
-		if(zapisz){
-			emManager.persist(uzytkownik);
+		if(save){
+			emManager.persist(user);
 		}
 	}
 	
@@ -62,7 +62,7 @@ public class UserRepositoryImpl implements UserRepository{
 	public User getUserByNameAndUserRole(User user, UserRoles userRole){
 		
 		TypedQuery<User> query = emManager.createNamedQuery("User.findUser", User.class);
-		query.setParameter("nazwa", user.getNazwa());
+		query.setParameter("name", user.getUsername());
 		query.setParameter("id", userRole.getId());
 			
 		User result = new User();
@@ -87,10 +87,10 @@ public class UserRepositoryImpl implements UserRepository{
 	}
 
 	@Override
-	public User getUserByName(String nazwa) {
+	public User getUserByName(String name) {
 		
-		TypedQuery<User> query = emManager.createQuery("SELECT u FROM User u WHERE u.nazwa = :nazwa", User.class);
-		query.setParameter("nazwa", nazwa);
+		TypedQuery<User> query = emManager.createQuery("SELECT u FROM User u WHERE u.name = :name", User.class);
+		query.setParameter("name", name);
 		
 		return query.getSingleResult();
 	}	

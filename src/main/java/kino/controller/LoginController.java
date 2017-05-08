@@ -33,24 +33,8 @@ public class LoginController {
 	@Autowired
 	private UserRolesService userRolesService;
 	
-	boolean czyDodacAdmina = true;
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String Login(Model model){	
-		
-		/*if(czyDodacAdmina){
-			UserRoles userRoles = new UserRoles("ROLE_ADMIN");
-			Set<User> listaUzytkownikow = new HashSet<User>();
-			User uzytkownik = new User("Marcin", "Marcin", "true", userRoles);
-			listaUzytkownikow.add(uzytkownik);	
-			userRoles.setUsers(listaUzytkownikow);
-			userRolesService.save(userRoles);
-			userService.save(uzytkownik);
-			czyDodacAdmina = false;
-		}*/
-		
-		//model.addAttribute("user", name);
-			
+	public String Login(Model model){		
 		return "login";
 	}
 	

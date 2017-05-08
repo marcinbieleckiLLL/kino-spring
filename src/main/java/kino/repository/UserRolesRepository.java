@@ -8,6 +8,6 @@ import kino.domain.UserRoles;
 public interface UserRolesRepository {
 	
 	public List<UserRoles> getAllUserRoles();
-	public void save(UserRoles rola);
+	public void save(UserRoles role);
 	public UserRoles getUserRoleById(Long id);
 }

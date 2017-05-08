@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kino.domain.Film;
+import kino.domain.Movie;
 import kino.domain.Seans;
 import kino.repository.SeansRepository;
 import kino.service.SeansService;
@@ -30,23 +30,23 @@ public class SeansServiceImpl implements SeansService {
 	}
 
 	@Override
-	public List<Seans> getSeansByFilmNameAndDay(Film film, String dzien) {
-		return seansRepository.getSeansByFilmNameAndDay(film, dzien);
+	public List<Seans> getSeansByFilmNameAndDay(Movie movie, String day) {
+		return seansRepository.getSeansByFilmNameAndDay(movie, day);
 	}
 
 	@Override
-	public List<String> createList(String atrybut1, String atrybut2, String atrybut3, String atrybut4) {
-		return seansRepository.createList(atrybut1, atrybut2, atrybut3, atrybut4);
+	public List<String> createList(String attribute1, String attribute2, String attribute3, String attribute4) {
+		return seansRepository.createList(attribute1, attribute2, attribute3, attribute4);
 	}
 
 	@Override
-	public Seans getSeansByFilmNameAndDayAndHour(String godzina) {
-		return seansRepository.getSeansByFilmNameAndDayAndHour(godzina);
+	public Seans getSeansByFilmNameAndDayAndHour(String hour) {
+		return seansRepository.getSeansByFilmNameAndDayAndHour(hour);
 	}
 
 	@Override
-	public Seans getTwojSeans() {
-		return seansRepository.getTwojSeans();
+	public Seans getCurrentSeans() {
+		return seansRepository.getYourSeans();
 	}
 
 	@Override

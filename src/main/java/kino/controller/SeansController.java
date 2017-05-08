@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import kino.domain.Seans;
-import kino.insert.MiejsceInsert;
+import kino.insert.PositionInsert;
 import kino.insert.SeansInsert;
-import kino.model.Godziny;
-import kino.service.FilmService;
-import kino.service.MiejsceService;
+import kino.model.Hours;
+import kino.service.MovieService;
+import kino.service.PositionService;
 import kino.service.SeansService;
 
 @Controller
@@ -28,25 +28,25 @@ import kino.service.SeansService;
 public class SeansController {
 
 	@Autowired
-	private FilmService filmService;
+	private MovieService movieService;
 	
 	@Autowired
 	private SeansService seansService;
 	
 	@Autowired
-	private MiejsceService miejsceService;
+	private PositionService positionService;
 	
 	
 	@RequestMapping(value = "/rest", method = RequestMethod.POST, consumes = {"application/json"})
-	public @ResponseBody List<Seans> seans(@RequestBody Godziny request){
+	public @ResponseBody List<Seans> seans(@RequestBody Hours request){
 		
-		String dzien = request.getDzien().toString();
-		String nazwa = request.getNazwa().toString();
+		String day = request.getDay().toString();
+		String name = request.getName().toString();
 		
 		SeansInsert seansInsert = new SeansInsert();
-		seansInsert.seansInsert(seansService, filmService, dzien, nazwa);
+		seansInsert.seansInsert(seansService, movieService, day, name);
 		
-		return seansService.getSeansByFilmNameAndDay(filmService.getFilmByName(nazwa), dzien);
+		return seansService.getSeansByFilmNameAndDay(movieService.getFilmByName(name), day);
 		
 	}
 	
@@ -55,15 +55,15 @@ public class SeansController {
 	public String miejsce(Model model, @PathVariable("godzina") String godzina){
 		
 		Seans seans = seansService.getSeansByFilmNameAndDayAndHour(godzina);
-		MiejsceInsert miejsceInsert = new MiejsceInsert();
-		miejsceInsert.insert(miejsceService, seans);
+		PositionInsert miejsceInsert = new PositionInsert();
+		miejsceInsert.insert(positionService, seans);
 		
 		model.addAttribute("seans", seans);
-		model.addAttribute("miejsca1", miejsceService.getColumn("1", seans));
-		model.addAttribute("miejsca2", miejsceService.getColumn("2", seans));
-		model.addAttribute("miejsca3", miejsceService.getColumn("3", seans));
+		model.addAttribute("positions1", positionService.getColumn("1", seans));
+		model.addAttribute("positions2", positionService.getColumn("2", seans));
+		model.addAttribute("positions3", positionService.getColumn("3", seans));
 		
-		return "miejsca";
+		return "positions";
 		
 	}
 }
